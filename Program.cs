@@ -40,7 +40,7 @@ class Program
     static void Main(string[] args)
     {   
         Console.ForegroundColor = ConsoleColor.Red;
-        HeartGenerator smallHeart = new HeartGenerator(size: 5, filler: '$', background: '•');
+        HeartGenerator smallHeart = new HeartGenerator(size: 1, filler: '$', background: '•');
         smallHeart.generateHeart();
         HeartGenerator bigHeart = new HeartGenerator(size: 5, filler: '@', background: '•');
         bigHeart.generateHeart();

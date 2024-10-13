@@ -35,6 +35,26 @@ class HeartGenerator
     }
 }
 
+class SquareGenerator
+{
+    public int size;
+    public char filler;
+    public char background;
+
+    public SquareGenerator(int size, char filler, char background)
+    {
+        this.size = size;
+        this.filler = filler;
+        this.background = background;
+    }
+    public void generateSquare()
+    {
+        throw new NotImplementedException();
+    }
+
+
+}
+
 class Program
 {
     static void Main(string[] args)

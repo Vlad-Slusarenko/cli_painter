@@ -38,27 +38,33 @@ class HeartGenerator
 class SquareGenerator
 {
     public int size;
-    public char filler;
     public char background;
 
-    public SquareGenerator(int size, char filler, char background)
+    public SquareGenerator(int size, char background)
     {
         this.size = size;
-        this.filler = filler;
         this.background = background;
     }
     public void generateSquare()
-    {
-        throw new NotImplementedException();
-    }
-
-
+     {
+        if (size <= 0) 
+            return;
+        for (int i = 0; i < size; i++ )
+        {
+            char[] buf = new char[size];
+            Array.Fill(buf, background); 
+            Console.WriteLine(buf);
+        }
+          
+     } 
+         
 }
 
 class Program
 {
     static void Main(string[] args)
     {   
+        //Heart
         Console.ForegroundColor = ConsoleColor.Red;
         HeartGenerator smallHeart = new HeartGenerator(size: 1, filler: '$', background: '•');
         smallHeart.generateHeart();
@@ -68,7 +74,8 @@ class Program
         cuteHeart.generateHeart();
         HeartGenerator binaryHeart = new HeartGenerator(size: 5, filler: '1', background: '0');
         binaryHeart.generateHeart();
-
-
+        //Square
+        SquareGenerator bigSquare = new SquareGenerator(size: 20, background: '•');
+        bigSquare.generateSquare();
     }
-}
+}   

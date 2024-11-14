@@ -38,27 +38,73 @@ class HeartGenerator
 class SquareGenerator
 {
     public int size;
+    public char background;
+
+    public SquareGenerator(int size, char background)
+    {
+        this.size = size;
+        this.background = background;
+    }
+    public void generateSquare()
+     {
+        if (size <= 0) 
+            return;
+        for (int i = 0; i < size; i++ )
+        {
+            char[] buf = new char[size];
+            Array.Fill(buf, background); 
+            Console.WriteLine(buf);
+        }
+          
+     } 
+         
+}
+
+
+class RhombusGenerator
+{
+    public int size;
     public char filler;
     public char background;
 
-    public SquareGenerator(int size, char filler, char background)
+    public RhombusGenerator(int size, char filler, char background)
     {
         this.size = size;
         this.filler = filler;
         this.background = background;
     }
-     public void generateSquare()
-    {
-        if (size <= 0) return;
+    public void generateRhombus()
+     {
+        if (size <= 0) 
+            return;
         int width = 2 * size - 1;
-        char[] buf = new char[width];     
-        for (int i = 1 - size; i < (width + 1) / 2; i++)  
+        for (int i = 0; i < size; i++)
         {
-            Array.Fill(buf, filler);
-            Console.WriteLine(buf);  
+            char[] buf = new char[width];
+            Array.Fill(buf, background);
+            for (int col = size - i - 1; col <= size + i - 1; col++)
+            {
+                buf[col] = filler;
+            }
+
+            Console.WriteLine(buf);
         }
-    } 
+
+        for (int i = size - 2; i >= 0; i--)
+        {
+            char[] buf = new char[width];
+            Array.Fill(buf, background);
+            for (int col = size - i - 1; col <= size + i - 1; col++)
+            {
+                buf[col] = filler;
+            }
+
+            Console.WriteLine(buf);
+        } 
+    }
 }
+
+
 
 class Program
 {
@@ -75,7 +121,10 @@ class Program
         HeartGenerator binaryHeart = new HeartGenerator(size: 5, filler: '1', background: '0');
         binaryHeart.generateHeart();
         //Square
-        SquareGenerator smallSquare = new SquareGenerator(size: 2, filler: '$', background: '•');
-        smallSquare.generateSquare();
+        SquareGenerator bigSquare = new SquareGenerator(size: 20, background: '•');
+        bigSquare.generateSquare();
+        //Rhombus
+        RhombusGenerator bigRhombus = new RhombusGenerator(size: 10, filler: '$', background: '•');
+        bigRhombus.generateRhombus(); 
     }
 }   
